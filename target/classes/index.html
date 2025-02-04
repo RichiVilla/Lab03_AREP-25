@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios Web</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Servicios Web</h1>
+</header>
+<main>
+    <!-- Sección 1: Saludo, Suma, Pi y Euler -->
+    <section>
+        <h2>Operaciones Básicas</h2>
+        <h3>Saludo</h3>
+        <input type="text" id="name-input" placeholder="Ingresa tu nombre">
+        <button onclick="sayHello()">Hola!</button>
+        <p id="hello-result"></p>
+
+        <h3>Suma de dos números</h3>
+        <input type="number" id="num1-input" placeholder="Número 1">
+        <input type="number" id="num2-input" placeholder="Número 2">
+        <button onclick="sumNumbers()">Sumar</button>
+        <p id="sum-result"></p>
+
+        <h3>Valor de Pi</h3>
+        <button onclick="getPi()">Obtener Pi</button>
+        <p id="pi-result"></p>
+
+        <h3>Valor de Euler</h3>
+        <button onclick="getEuler()">Obtener Euler</button>
+        <p id="euler-result"></p>
+    </section>
+
+    <!-- Sección 2: Día de Mañana, Fecha y Hora -->
+    <section>
+        <h2>Información de Fecha y Hora</h2>
+        <h3>Día de Mañana</h3>
+        <button onclick="getTomorrow()">¿Qué día será mañana?</button>
+        <p id="tomorrow-result"></p>
+
+        <h3>Fecha y Hora</h3>
+        <button onclick="getDateTime()">Obtener Fecha y Hora</button>
+        <p id="datetime-result"></p>
+    </section>
+
+    <!-- Sección 3: Otras Informaciones -->
+    <section>
+        <h2>Otras Informaciones</h2>
+        <h3>IP del Servidor</h3>
+        <button onclick="getServerIP()">Obtener IP</button>
+        <p id="server-ip-result"></p>
+
+        <h3>Sistema Operativo</h3>
+        <button onclick="getSystemInfo()">Obtener Sistema</button>
+        <p id="system-result"></p>
+
+        <h3>Memoria Usada</h3>
+        <button onclick="getMemoryInfo()">Obtener Memoria</button>
+        <p id="memory-result"></p>
+
+        <h3>Autor del Código</h3>
+        <button onclick="getAuthor()">Obtener Autor</button>
+        <p id="author-result"></p>
+    </section>
+</main>
+<footer>
+    <p>AREP 2025-1</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
