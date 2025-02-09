@@ -11,32 +11,46 @@ import java.util.Map;
 public class Spring {
 
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InvocationTargetException, MalformedURLException {
-        Class c = Class.forName(args[0]);
-        Map<String,Method> services = new HashMap();
+        if (args.length < 1) {
+            System.out.println("Uso: java -cp target/WebServer-1.0-SNAPSHOT.jar edu.escuelaing.spring.Spring <nombre_clase_servicio>");
+            return;
+        }
 
-        if (c.isAnnotationPresent(RestController.class)){
+        // Cargar la clase desde el argumento de la línea de comandos
+        Class<?> c = Class.forName(args[0]);
+        Map<String, Method> services = new HashMap<>();
+
+        if (c.isAnnotationPresent(RestController.class)) {
             Method[] methods = c.getDeclaredMethods();
-            for (Method m: methods){
-                if(m.isAnnotationPresent(GetMapping.class)){
+            for (Method m : methods) {
+                if (m.isAnnotationPresent(GetMapping.class)) {
                     String key = m.getAnnotation(GetMapping.class).value();
-                    services.put(key,m);
+                    services.put(key, m);
                 }
             }
         }
 
-        URL serviceurl = new URL("http://localhost:8080/App/greeting?name=Nicolas");
-        String path = serviceurl.getPath();
-        String query = serviceurl.getQuery();
+        // Leer la URL del servicio desde la línea de comandos
+        if (args.length < 2) {
+            System.out.println("Uso: java -cp target/WebServer-1.0-SNAPSHOT.jar edu.escuelaing.spring.Spring <nombre_clase_servicio> <url>");
+            return;
+        }
+
+        URL serviceUrl = new URL(args[1]);
+        String path = serviceUrl.getPath();
+        String query = serviceUrl.getQuery();
 
         System.out.println("path: " + path);
         System.out.println("query: " + query);
 
+        // Obtener solo el nombre del servicio sin prefijos
+        String[] pathParts = path.split("/");
+        String serviceName = pathParts[pathParts.length - 1];
 
-        String serviceName = path.substring(4);
         System.out.println("Service Name: " + serviceName);
 
+        Method ms = services.get("/" + serviceName);
 
-        Method ms = services.get(serviceName);
         if (ms != null) {
             Object[] argsToPass = extractArguments(ms, query);
             System.out.println("Rta al servicio: " + ms.invoke(null, argsToPass));
