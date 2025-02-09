@@ -20,7 +20,7 @@ public class ServicesAvaliable{
 
 
     @GetMapping("/hello")
-    public String hello(@RequestParameters(value = "name", defaultValue = "Usuario") String name) {
+    public static String hello(@RequestParameters(value = "name", defaultValue = "Usuario") String name) {
         return "Hola " + name;
     }
 
@@ -37,20 +37,20 @@ public class ServicesAvaliable{
     }
 
     @GetMapping("/manana")
-    public String manana() {
+    public static String manana() {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
         String dayName = tomorrow.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
         return "Mañana será " + dayName + ".  ";
     }
 
     @GetMapping("/fecha-hora")
-    public String fechaHora() {
+    public static String fechaHora() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return "Fecha y hora actual: " + LocalDateTime.now().format(formatter);
     }
 
     @GetMapping("/ip")
-    public String miIp() {
+    public static String miIp() {
         try {
             return "La IP del servidor es: " + InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
@@ -60,7 +60,7 @@ public class ServicesAvaliable{
 
 
     @GetMapping("/sistema")
-    public String sistema() {
+    public static String sistema() {
         String os = System.getProperty("os.name");
         String version = System.getProperty("os.version");
         return "Sistema operativo: " + os + " (versión " + version + ") ";
@@ -72,7 +72,7 @@ public class ServicesAvaliable{
     }
 
     @GetMapping("/memoria")
-    public String memoria() {
+    public static String memoria() {
         long freeMemory = Runtime.getRuntime().freeMemory() / (1024 * 1024);
         long totalMemory = Runtime.getRuntime().totalMemory() / (1024 * 1024);
         return String.format("Memoria usada: %d MB / %d MB", (totalMemory - freeMemory), totalMemory);
@@ -80,7 +80,7 @@ public class ServicesAvaliable{
 
 
     @GetMapping("/autor")
-    public String autor() {
+    public static String autor() {
         return "Este código fue desarrollado por Ricardo Villamizar. ";
     }
 
@@ -90,7 +90,7 @@ public class ServicesAvaliable{
     }
 
     @GetMapping("/pi")
-    public String getPi() {
+    public static String getPi() {
         return "El valor de Pi es: " + String.valueOf(Math.PI);
     }
 
