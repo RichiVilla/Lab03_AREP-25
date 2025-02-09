@@ -43,11 +43,14 @@ To use the server locally, follow these steps:
 git clone https://github.com/RichiVilla/Lab03_AREP-25.git
 ```
 
-2. Open the cloned folder in your preferred IDE
+2. Open the cloned folder in your preferred IDE and execute in a GitBash terminal:
+```
+   mvn clean install
+```
 
-3. Run the App.java file:
+4. Run the App.java file:
    
-4. Open the following address in your browser:
+5. Open the following address in your browser:
 ```
    http://localhost:8080
 ```
