@@ -1,4 +1,4 @@
-# Workshop3_-WEB
+# Workshop3_Workshop on Application Server Architectures, Object Meta-Protocols, IoC Pattern, and Reflection
 
 ## Project Summary
 
@@ -61,83 +61,57 @@ git clone https://github.com/RichiVilla/Lab03_AREP-25.git
 
 ### Testing the App
 
-Once the server is running, you can use the following four REST services:
+Once the server is running, you can use the following endpoints:
 
-1. "Saludo": Provides a brief greeting.
+- GET /hello?name=<name>: Gives a brief greeting with a name or without it.
+- GET /sum?a=<a>&b=<b>: Sums two int numbers.
+- GET /pi: Gives the value of Pi.
+- GET /euler: Swhows the value of Euler.
+- GET /manana: Shows what the next day will be.
+- GET /fehca-hora: Gives the exact date and time.
+- GET /ip: Gives the IP of the user.
+- GET /sistema: Shows the OS of the user.
+- GET /memoria: It shows the memory used i the user's pc.
+- GET /autor: Gives the name of the person who made the web.
+
+![image](https://github.com/user-attachments/assets/b7cb9ed2-8d41-4591-b14f-e385a37c4f63)
+
+
+### Checking Requests and Reflection
+Running the HttpServer java file, we can check in the CMD if the program is looking for the Request Paths:
+
+1. Memory:
+
+![image](https://github.com/user-attachments/assets/2e02053a-3f6c-4758-b986-0bbe6b1fcc99)
+
+2. Sum:
+
+![image](https://github.com/user-attachments/assets/25e1e2ee-ff80-453c-a356-d73da342c7c4)
+
+3. Manana:
+
+![image](https://github.com/user-attachments/assets/d7eabcb0-1d0e-4e96-a41d-dee3f85fb2fc)
+
+
+
+We can check all the services avaliable using the next code:
+
+```
+java -cp target/WebServer-1.0-SNAPSHOT.jar edu.escuelaing.spring.Spring edu.escuelaing.spring.ServicesAvaliable "http://localhost:8080/<service>"
+```
+
+Using the previous line, we can check the services, for example:
+
+1. Hello:
    
-![image](https://github.com/user-attachments/assets/054a3418-dc5d-45c8-b2fe-a3e834a6abde)
+![image](https://github.com/user-attachments/assets/3bcb5163-abfb-4a8c-ae2d-ba1edfa317f4)
+
+2. Fecha-hora
+
+![image](https://github.com/user-attachments/assets/42c1ab8e-a413-4cf3-b95a-c2e55259fb1d)
+
+3. Sum:
+
+![image](https://github.com/user-attachments/assets/69622ff7-612f-4a75-8ede-ff5b945de160)
 
 
-3. "Valor de Pi": Displays the value of Pi.
-
-![image](https://github.com/user-attachments/assets/aea04922-c97d-4908-9494-58a4f1d74260)
-
-
-4. "Suma de dos números": Shows the sum of two desired numbers.
-   
-![image](https://github.com/user-attachments/assets/95e308e4-aff7-4b46-8698-2766244ecfaa)
-
-
-### Checking URIs
-
-We can use too the following requests to test the services:
-1. "Saludo":
-   a. Without a name
-```
-   http://localhost:8080/App/hello
-```
-
-![image](https://github.com/user-attachments/assets/ec31d44a-823a-479e-99fb-43ef23446b67)
-
-b. With a name
-
-```
-   http://localhost:8080/App/hello?name=Richi
-```
-![image](https://github.com/user-attachments/assets/bc75fd53-c2b8-43b4-8ea7-2638c55f9989)
-
-
-2. "Valor de Pi":
- ```
-http://localhost:8080/App/pi
-```
-![image](https://github.com/user-attachments/assets/a95e2b18-c830-47d6-98cd-1324f2a7fd1f)
-
-
-
-3. "Suma de dos números":
-
-  a. Valid input
- ```
-http://localhost:8080/App/sum?num1=5.75&num2=10.34
-```
-
-![image](https://github.com/user-attachments/assets/7c63a6d9-af6c-44ef-be25-b8cfdf5871de)
-
-a. Invalid input
- ```
-http://localhost:8080/App/sum?num1=a&num2=10
-```
-![image](https://github.com/user-attachments/assets/eaa64d0d-4249-4c99-b7b1-b84bd5f6332c)
-
-### Unit Tests
-In the project we have test for all our components that we can try.
-
-1. App Test:
-   
-![image](https://github.com/user-attachments/assets/d0dfa38b-3408-435b-b426-e3c46d089059)
-
-
-2. RequestTest:
-   
-![image](https://github.com/user-attachments/assets/de715267-3f59-434a-a662-83c3e224f4b1)
-
-
-3. ResponseTest:
-   
-![image](https://github.com/user-attachments/assets/681ddb47-957c-481d-bd79-06185bc37ec4)
-
-
-4. WebServerTest:
-
-![image](https://github.com/user-attachments/assets/8a02a207-23c9-48eb-83fb-fcd300592459)
